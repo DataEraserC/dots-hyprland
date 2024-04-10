@@ -7,8 +7,9 @@
     # reload, so lets move hosts out of the way
 
     nixosModules = {
-      hm-modules = { end_4-dots_hyprland = import ./modules/hm; };
-      nixos-modules = { end_4-dots_hyprland = import ./modules/nixos; };
+      hm-modules = { "end_4-dots_hyprland" = { imports = [ ./modules/hm ]; }; };
+      nixos-modules = { "end_4-dots_hyprland" = { imports = [ ./modules/nixos ]; }; };
+
     };
   };
   inputs = {

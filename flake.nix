@@ -1,5 +1,5 @@
 {
-  description = "end_4's NixOS flake";
+  description = "A NixOS flake which try to impl end-4_dots-hyprland in nixos";
 
   outputs = { self, impurity, ... }@inputs: {
     # editing flake.nix triggers certain utilities such as direnv
@@ -7,8 +7,8 @@
     # reload, so lets move hosts out of the way
 
     nixosModules = {
-      hm-modules = { "end-4_dots-hyprland"= import ./modules/hm ;};
-      nixos-modules = {"end-4_dots-hyprland"= import ./modules/nixos ;};
+      hm-modules = { "end_4-dots_hyprland" = import ./modules/hm; };
+      nixos-modules = { "end_4-dots_hyprland" = import ./modules/nixos; };
     };
   };
   inputs = {
@@ -52,7 +52,7 @@
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    end-4_dots-hyprland = {
+    end_4-dots_hyprland = {
       url = "github:end-4/dots-hyprland";
       flake = false;
     };

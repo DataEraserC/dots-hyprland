@@ -1,4 +1,6 @@
-{ lib, ... }: with lib.hm.gvariant; {
+{ lib
+, ...
+}: with lib.hm.gvariant; {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       sources = [ (mkTuple [ "xkb" "en" ]) ];
@@ -53,11 +55,11 @@
     };
 
     "org/gnome/shell/keybindings" = {
-      switch-to-application-1 = [];
-      switch-to-application-2 = [];
-      switch-to-application-3 = [];
-      switch-to-application-4 = [];
-      switch-to-application-5 = [];
+      switch-to-application-1 = [ ];
+      switch-to-application-2 = [ ];
+      switch-to-application-3 = [ ];
+      switch-to-application-4 = [ ];
+      switch-to-application-5 = [ ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
@@ -134,8 +136,8 @@
     };
 
     "org/virt-manager/virt-manager/connections" = {
-      autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
     };
   };
 }

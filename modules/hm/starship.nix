@@ -1,4 +1,6 @@
-{ lib, ... }:
+{ lib
+, ...
+}:
 let
   lang = icon: color: {
     symbol = icon;

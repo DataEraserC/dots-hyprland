@@ -1,4 +1,7 @@
-{ pkgs, inputs, ... }:
+{ pkgs
+, inputs
+, ...
+}:
 let
   gtk-theme = "adw-gtk3-dark";
 
@@ -26,9 +29,11 @@ let
   google-fonts = (pkgs.google-fonts.override {
     fonts = [
       # Sans
-      "Gabarito" "Lexend"
+      "Gabarito"
+      "Lexend"
       # Serif
-      "Chakra Petch" "Crimson Text"
+      "Chakra Petch"
+      "Crimson Text"
     ];
   });
 

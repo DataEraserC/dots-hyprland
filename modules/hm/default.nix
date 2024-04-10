@@ -4,19 +4,15 @@
 { config
 , lib
 , inputs
-, end-4_dots-hyprland
-, hyprland
-, hyprland-plugins
 , pkgs
 , ...
 }:
 let
 
-  cfg = config.home.features.end-4_dots-hyprland;
-  mkPath = (f: ./. + "${f}");
+  cfg = config.modules.desktop.end_4-dots_hyprland-hm_module;
 in
 {
-  options.home.features.end-4_dots-hyprland = with lib; {
+  options.modules.desktop.end_4-dots_hyprland-hm_module = with lib; {
     enable = mkEnableOption "end-4 's hyprland(hm-module part)";
   };
 
@@ -37,8 +33,9 @@ in
     ];
     home = {
       sessionVariables = {
-        NIXPKGS_ALLOW_UNFREE = "1";
-        NIXPKGS_ALLOW_INSECURE = "1";
+        NIXPKGS_ALLOW_UNFREE = lib.mkDefault "1";
+        NIXPKGS_ALLOW_INSECURE = lib.mkDefault "1";
+        NIXPKGS_ALLOW_BROKEN = lib.mkDefault "1";
       };
       sessionPath = [
         "$HOME/.local/bin"
@@ -49,14 +46,14 @@ in
       createDirectories = true;
     };
     gtk = {
-      enable = true;
-      font = {
+      enable = lib.mkDefault true;
+      font = lib.mkDefault {
         name = "Rubik";
         package = pkgs.google-fonts.override { fonts = [ "Rubik" ]; };
         size = 11;
       };
       gtk3 = {
-        bookmarks = [
+        bookmarks = lib.mkDefault [
           "file://${config.home.homeDirectory}/Downloads"
           "file://${config.home.homeDirectory}/Documents"
           "file://${config.home.homeDirectory}/Pictures"

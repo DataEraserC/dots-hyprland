@@ -8,12 +8,12 @@
 
     nixosModules = {
       "end_4-dots_hyprland" = {
-        import = [ ./modules/nixos ];
+        imports = [ ./modules/nixos ];
       };
     };
     homeManagerModules = {
       "end_4-dots_hyprland" = {
-        import = [ ./modules/hm ];
+        imports = [ ./modules/hm ];
       };
     };
   };

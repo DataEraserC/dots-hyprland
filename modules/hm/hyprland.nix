@@ -1,9 +1,11 @@
 { pkgs
+, hyprland
+, hyprland-plugins
 , ...
 }@inputs:
 let
-  hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
-  plugins = inputs.hyprland-plugins.packages.${pkgs.system};
+  hyprland = hyprland.packages.${pkgs.system}.hyprland;
+  plugins = hyprland-plugins.packages.${pkgs.system};
 
   launcher = pkgs.writeShellScriptBin "hypr" ''
     #!/${pkgs.bash}/bin/bash

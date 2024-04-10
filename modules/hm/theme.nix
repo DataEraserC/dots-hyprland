@@ -1,4 +1,5 @@
 { pkgs
+,more-waita
 , ...
 }@inputs:
 let
@@ -6,7 +7,7 @@ let
 
   moreWaita = pkgs.stdenv.mkDerivation {
     name = "MoreWaita";
-    src = inputs.more-waita;
+    src = more-waita;
     installPhase = ''
       mkdir -p $out/share/icons
       mv * $out/share/icons

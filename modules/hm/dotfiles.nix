@@ -1,5 +1,6 @@
 { pkgs
 , lib
+,end_4-dots_hyprland
 , ...
 }@inputs:
 let
@@ -15,7 +16,7 @@ in
 {
   home.file = (lib.mkMerge
 
-    ((map (mkHomeConfigPath "${inputs.end_4-dots_hyprland}")
+    ((map (mkHomeConfigPath "${end_4-dots_hyprland}")
       [
         "ags"
         "anyrun"
@@ -31,8 +32,8 @@ in
       ])
     ++
     [{
-      ".config/thorium-flags.conf".source = ./. + "/${inputs.end_4-dots_hyprland}/.config/thorium-flags.conf";
-      #"starship.toml".source = ./. + "${inputs.end_4-dots_hyprland}/.config/starship.toml";
+      ".config/thorium-flags.conf".source = ./. + "/${end_4-dots_hyprland}/.config/thorium-flags.conf";
+      #"starship.toml".source = ./. + "${end_4-dots_hyprland}/.config/starship.toml";
     }])
   );
 }

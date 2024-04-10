@@ -4,6 +4,8 @@
 { config
 , lib
 , pkgs
+, ags
+, anyrun
 , ...
 }@inputs:
 let
@@ -17,8 +19,8 @@ in
 
   config = lib.mkIf cfg.enable {
     imports = [
-      inputs.ags.homeManagerModules.default
-      inputs.anyrun.homeManagerModules.default
+      ags.homeManagerModules.default
+      anyrun.homeManagerModules.default
       ./ags.nix
       ./anyrun.nix
       ./browser.nix

@@ -1,9 +1,10 @@
 { pkgs
+,ags
 , ...
 }@inputs:
 {
   imports = [
-    inputs.ags.homeManagerModules.default
+    ags.homeManagerModules.default
   ];
 
   home.packages = with pkgs; [

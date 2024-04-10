@@ -1,4 +1,5 @@
 { pkgs
+,firefox-gnome-theme
 , ...
 }@inputs: {
   home = {
@@ -8,7 +9,7 @@
 
     file."firefox-gnome-theme" = {
       target = ".mozilla/firefox/default/chrome/firefox-gnome-theme";
-      source = inputs.firefox-gnome-theme;
+      source = firefox-gnome-theme;
     };
     packages = with pkgs; [
       libsForQt5.plasma-browser-integration

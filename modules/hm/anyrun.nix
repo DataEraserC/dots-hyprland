@@ -1,7 +1,6 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
-}:
+}@inputs:
 {
   imports = [
     inputs.anyrun.homeManagerModules.default

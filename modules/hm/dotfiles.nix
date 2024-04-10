@@ -1,8 +1,7 @@
-{ inputs
-, pkgs
+{ pkgs
 , lib
 , ...
-}:
+}@inputs:
 let
   mkRootPath = (f: /. + "{f}");
   mkHomeConfigPath = (path: f: {

@@ -1,7 +1,6 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
-}: {
+}@inputs: {
   home = {
     sessionVariables = {
       BROWSER = "firefox";

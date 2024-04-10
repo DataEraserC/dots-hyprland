@@ -1,7 +1,6 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
-}:
+}@inputs:
 let
   hyprland = inputs.hyprland.packages.${pkgs.system}.hyprland;
   plugins = inputs.hyprland-plugins.packages.${pkgs.system};

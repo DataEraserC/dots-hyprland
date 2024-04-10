@@ -3,10 +3,9 @@
 # features.end-4_dots-hyprland.enable = true;
 { config
 , lib
-, inputs
 , pkgs
 , ...
-}:
+}@inputs:
 let
 
   cfg = config.modules.desktop.end_4-dots_hyprland-hm_module;

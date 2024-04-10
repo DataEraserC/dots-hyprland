@@ -7,10 +7,14 @@
     # reload, so lets move hosts out of the way
 
     nixosModules = {
-      "end_4-dots_hyprland" = import ./modules/nixos inputs;
+      "end_4-dots_hyprland" = {
+        import = [ ./modules/nixos ];
+      };
     };
     homeManagerModules = {
-      "end_4-dots_hyprland" = import ./modules/hm inputs;
+      "end_4-dots_hyprland" = {
+        import = [ ./modules/hm ];
+      };
     };
   };
   inputs = {

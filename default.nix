@@ -15,6 +15,7 @@
   overlays = import ./overlays; # nixpkgs overlays
 
   example-package = pkgs.callPackage ./pkgs/example-package { };
+  dots_hyprland_config = pkgs.callPackage ./pkgs/dots_hyprland_config { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }

@@ -39,14 +39,14 @@
         "type": "github"
       }
     },
-    "end-4_dots-hyprland": {
+    "end_4-dots_hyprland": {
       "flake": false,
       "locked": {
-        "lastModified": 1712732223,
-        "narHash": "sha256-mYPOuVNS+m8OmmLtEhGpMj0PEiDdtcP0TSj4zKiF/TI=",
+        "lastModified": 1713001306,
+        "narHash": "sha256-LgBSN0PBhnvl/BfEQt80ClQBsdF2zhPPQcJORusgUVU=",
         "owner": "end-4",
         "repo": "dots-hyprland",
-        "rev": "10a945e2e432d88cbb78fcb22d2c39f6f8035a8d",
+        "rev": "0d3fc19e572c69ecfc87d606c7f291c67315dae1",
         "type": "github"
       },
       "original": {
@@ -473,16 +473,16 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1712608508,
-        "narHash": "sha256-vMZ5603yU0wxgyQeHJryOI+O61yrX2AHwY6LOFyV1gM=",
-        "owner": "nixos",
+        "lastModified": 1712883908,
+        "narHash": "sha256-icE1IJE9fHcbDfJ0+qWoDdcBXUoZCcIJxME4lMHwvSM=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "4cba8b53da471aea2ab2b0c1f30a81e7c451f4b6",
+        "rev": "a0c9e3aee1000ac2bfb0e5b98c94c946a5d180a9",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-unstable",
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -507,7 +507,7 @@
       "inputs": {
         "ags": "ags",
         "anyrun": "anyrun",
-        "end-4_dots-hyprland": "end-4_dots-hyprland",
+        "end_4-dots_hyprland": "end_4-dots_hyprland",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-parts": "flake-parts_2",
         "gross": "gross",

@@ -45,7 +45,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-  outputs = { self, nixpkgs }:
+  outputs = { self, nixpkgs, ... }@args:
     let
       systems = [
         "x86_64-linux"

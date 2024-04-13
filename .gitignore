@@ -3,3 +3,6 @@
 .config/ags/scss/_musicwal.scss
 .config/ags/scss/_material.scss
 /cache
+
+result
+result-*

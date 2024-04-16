@@ -1,4 +1,20 @@
-{ stdenvNoCC, fetchgit, lib, slurp, swww, ags, fcitx5, gnome, polkit_gnome, hypridle, dbus, wl-clipboard, hyprland,microsoft-edge, ... }:
+{
+  stdenvNoCC,
+  fetchgit,
+  lib,
+  slurp,
+  swww,
+  ags,
+  fcitx5,
+  gnome,
+  polkit_gnome,
+  hypridle,
+  dbus,
+  wl-clipboard,
+  hyprland,
+  microsoft-edge,
+  ...
+}:
 stdenvNoCC.mkDerivation rec {
   pname = "dots_hyprland_config";
   version = "0.0-0";
@@ -13,36 +29,39 @@ stdenvNoCC.mkDerivation rec {
     cp -ar ${src}/. $out
     chmod -R +w .
 
+    # Handle .config/hypr
+
     # Some config should be separated from this ---> nope should place the together to make packaging more easily
     # Fix file path
     # hyprland.conf
-    substituteInPlace $out/.config/hypr/hyprland.conf --replace "~" "$out"
     # sed -i "5,10s@~@$out@g" $out/.config/hypr/hyprland.conf
     # custom_dir does not need to modify but should fix in $out/hypr/hyprland.conf
-    # Or Let user make a nix derivation 
+    # Or Let user make a nix derivation
     # sed -i "13,17s@~@$out@g" $out/.config/hypr/hyprland.conf
-    
-    # should set in deps not hardcode into config
 
-    # execs replace here
-    # sed -i "s@slurp@${slurp}/bin/slurp@g" $out/.config/hypr/hyprland/colors.conf
-    # sed -i "s@swww-daemon@${swww}/bin/swww-daemon@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@ags@${ags}/bin/ags@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@fcitx5@${fcitx5}/bin/fcitx5@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@gnome-keyring-daemon@${gnome.gnome-keyring}/bin/gnome-keyring-daemon@g" $out/.config/hypr/hyprland/execs.conf
-    substituteInPlace $out/.config/hypr/hyprland/execs.conf --replace "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-    # sed -i "s@/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1@${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@hypridle@${hypridle}/bin/hypridle@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@dbus-update-activation-environment@${dbus}/bin/dbus-update-activation-environment@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@wl-paste@${wl-clipboard}/bin/wl-paste@g" $out/.config/hypr/hyprland/execs.conf
-    # sed -i "s@hyprland@${hyprland}/bin/hyprctl@g" $out/.config/hypr/hyprland/execs.conf
+    # Handle .config/hypr/hyprland.conf
+    substituteInPlace $out/.config/hypr/hyprland/general.conf  \
+      --replace "~" "$out"
+    substituteInPlace $out/.config/hypr/hyprland.conf \
+      --replace "~" "$out"
+    substituteInPlace $out/.config/hypr/hyprlock.conf \
+      --replace "~" "$out"
 
-    # keybinds replace here
-    substituteInPlace $out/.config/hypr/hyprland/keybinds.conf --replace "/usr/bin/microsoft-edge-stable" "microsoft-edge-stable" --replace "~" "$out"
-    # sed -i "s@/usr/bin/microsoft-edge-stable@${microsoft-edge}/bin/microsoft-edge-stable@g" $out/.config/hypr/hyprland/keybinds.conf
-    # sed -i "s@~/.local/bin/fuzzel-emoji@ placeholder @g" $out/.config/hypr/hyprland/keybinds.conf
-    # sed -i "s@~/.config/ags@ placeholder @g" $out/.config/hypr/hyprland/keybinds.conf
+    # should set in deps not hardcode into config -> no I will make them in runtimedeps
+
+    # Handle .config/hypr/hyprland/execs.conf
+    substituteInPlace $out/.config/hypr/hyprland/execs.conf \
+      --replace "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+
+    # Handle .config/hypr/hyprland/keybinds.conf
+    substituteInPlace $out/.config/hypr/hyprland/keybinds.conf \
+      --replace "/usr/bin/microsoft-edge-stable" "microsoft-edge-stable" --replace "~" "$out"
     
+    # Handle .config/qt5ct
+    # Handle .config/qt5ct/qt5ct.conf
+    substituteInPlace $out/.config/qt5ct/qt5ct.conf \
+      --replace "/usr/share/qt5ct/colors/darker.conf" ""
+
     runHook postInstall
   '';
 

@@ -81,18 +81,19 @@ stdenvNoCC.mkDerivation rec {
       --replace "~/.config" "$out/.config"
 
     # Handle .config/ags/scripts/color_generation
+    # fix required: can not properly patch
     substituteInPlace $out/.config/ags/scripts/color_generation/applycolor.sh \
-      --replace "\"HOME\"/.config" "$out/.config"
-      --replace "HOME/.config" "$out/.config"
+      --replace ""$HOME"/.config" "$out/.config" \
+      --replace "$HOME/.config" "$out/.config"
     substituteInPlace $out/.config/ags/scripts/color_generation/colorgen.sh \
-      --replace "\"HOME\"/.config" "$out/.config"
-      --replace "HOME/.config" "$out/.config"
+      --replace ""$HOME"/.config" "$out/.config" \
+      --replace "$HOME/.config" "$out/.config"
     substituteInPlace $out/.config/ags/scripts/color_generation/switchcolor.sh \
-      --replace "\"HOME\"/.config" "$out/.config"
-      --replace "HOME/.config" "$out/.config"
+      --replace ""$HOME"/.config" "$out/.config" \
+      --replace "$HOME/.config" "$out/.config"
     substituteInPlace $out/.config/ags/scripts/color_generation/switchwall.sh \
-      --replace "\"HOME\"/.config" "$out/.config"
-      --replace "HOME/.config" "$out/.config"
+      --replace ""$HOME"/.config" "$out/.config" \
+      --replace "$HOME/.config" "$out/.config"
 
 
     # Handle .config/ags/modules

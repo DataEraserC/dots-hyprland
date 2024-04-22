@@ -13,6 +13,7 @@
   wl-clipboard,
   hyprland,
   microsoft-edge,
+  qt5ct,
   ...
 }:
 stdenvNoCC.mkDerivation rec {
@@ -41,11 +42,11 @@ stdenvNoCC.mkDerivation rec {
 
     # Handle .config/hypr/hyprland.conf
     substituteInPlace $out/.config/hypr/hyprland/general.conf  \
-      --replace "~" "$out"
+      --replace "~/.config" "$out/.config"
     substituteInPlace $out/.config/hypr/hyprland.conf \
-      --replace "~" "$out"
+      --replace "~/.config" "$out/.config"
     substituteInPlace $out/.config/hypr/hyprlock.conf \
-      --replace "~" "$out"
+      --replace "~/.config" "$out/.config"
 
     # should set in deps not hardcode into config -> no I will make them in runtimedeps
 
@@ -55,12 +56,42 @@ stdenvNoCC.mkDerivation rec {
 
     # Handle .config/hypr/hyprland/keybinds.conf
     substituteInPlace $out/.config/hypr/hyprland/keybinds.conf \
-      --replace "/usr/bin/microsoft-edge-stable" "microsoft-edge-stable" --replace "~" "$out"
-    
+      --replace "/usr/bin/microsoft-edge-stable" "microsoft-edge-stable" \
+      --replace "~/.config" "$out/.config"
+
     # Handle .config/qt5ct
     # Handle .config/qt5ct/qt5ct.conf
     substituteInPlace $out/.config/qt5ct/qt5ct.conf \
-      --replace "/usr/share/qt5ct/colors/darker.conf" ""
+      --replace "/usr/share/qt5ct/colors/darker.conf" "${qt5ct}/share/qt5ct/colors/darker.conf"
+
+
+
+    # Handle .config/ags
+
+    # Handle .config/ags/user_options.js
+    substituteInPlace $out/.config/ags/user_options.js \
+      --replace "~/.config" "$out/.config"
+
+    # Handle .config/ags/config_overviewOnly.js
+    substituteInPlace $out/.config/ags/config_overviewOnly.js \
+      --replace "~/.config" "$out/.config"
+
+    # Handle .config/ags/scripts/templates/hypr/hyprlock.conf
+    substituteInPlace $out/.config/ags/scripts/templates/hypr/hyprlock.conf \
+      --replace "~/.config" "$out/.config"
+
+    # Handle .config/ags/scripts/color_generation
+    substituteInPlace $out/.config/ags/scripts/color_generation/applycolor.sh \
+      --replace "\"HOME\"/.config" "$out/.config"
+    substituteInPlace $out/.config/ags/scripts/color_generation/colorgen.sh \
+      --replace "\"HOME\"/.config" "$out/.config"
+    substituteInPlace $out/.config/ags/scripts/color_generation/switchcolor.sh \
+      --replace "\"HOME\"/.config" "$out/.config"
+    substituteInPlace $out/.config/ags/scripts/color_generation/switchwall.sh \
+      --replace "\"HOME\"/.config" "$out/.config"
+
+
+    # Handle .config/ags/modules
 
     runHook postInstall
   '';
